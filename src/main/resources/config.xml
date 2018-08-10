@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- 设置连接数据库驱动的另外一种方法
+	<properties resource="config.properties">
+		<property name="password" value="8001"/>
+		<property name="username" value="root"/>
+	</properties>
+	使用其中的属性
+	<dataSource type="POOLED">
+	  <property name="username" value="${username}"/>
+	  <property name="password" value="${password}"/>
+	</dataSource>
+	 -->
+	 <!-- 
+	<settings>
+	  <setting name="cacheEnabled" value="true"/>
+	     打开延时加载
+	  <setting name="lazyLoadingEnabled" value="true"/>
+	     关闭立即加载
+	  <setting name="aggressiveLazyLoading" value="false"/>
+	  <setting name="multipleResultSetsEnabled" value="true"/>
+	  <setting name="useColumnLabel" value="true"/>
+	  <setting name="useGeneratedKeys" value="false" />
+	  <setting name="autoMappingBehavior" value="PARTIAL"/>
+	  <setting name="defaultExecutorType" value="SIMPLE"/>
+	  <setting name="defaultStatementTimeout" value="25"/>
+	  <setting name="safeRowBoundsEnabled" value="false"/>
+	  <setting name="mapUnderscoreToCamelCase" value="false"/>
+	   
+	  <setting name="localCacheScope" value="SESSION"/>
+	  <setting name="jdbcTypeForNull" value="OTHER"/>
+	  <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
+	</settings>
+	-->
+	
+	<typeAliases>
+		<typeAlias type="com.lixianghong.airinfo.pojo.Airinfo" alias="airinfo"/>
+	</typeAliases>
+	<!-- 
+	类型处理器
+	<typeHandlers>
+		<typeHandler handler=""/>
+	</typeHandlers>
+	 -->
+	<environments default="mysqlEnv">
+		<environment id="mysqlEnv">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url"
+					value="jdbc:mysql://localhost:3306/AirinfoMybatis?useUnicode=true&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true" />
+				<property name="username" value="root" />
+				<property name="password" value="8001" />
+				<property name="poolMaximumActiveConnections" value="20" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="mapper.xml"/>
+	</mappers>
+	
+
+</configuration>
